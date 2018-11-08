@@ -1,0 +1,17 @@
+@import "colors";
+
+.header {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    justify-self: stretch;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: $red;
+    border-bottom: 3px solid black;
+    font-size: 1.25rem;
+
+    p {
+        margin: 0;
+    }
+}

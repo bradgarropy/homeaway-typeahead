@@ -1,0 +1,50 @@
+{
+    "name": "infinite-scroll",
+    "version": "1.0.0",
+    "description": "💩 crapp starter",
+    "keywords": [
+        "create-react-app",
+        "react",
+        "scss",
+        "eslint"
+    ],
+    "homepage": "https://crapp-starter.netlify.com",
+    "bugs": {
+        "url": "https://github.com/bradgarropy/cra-starter/issues"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Brad Garropy",
+        "email": "bradgarropy@gmail.com",
+        "url": "https://bradgarropy.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bradgarropy/cra-starter"
+    },
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "dependencies": {
+        "axios": "^0.18.0",
+        "lodash.isempty": "^4.4.0",
+        "node-sass": "^4.9.3",
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2",
+        "react-router-dom": "^4.3.1",
+        "react-scripts": "2.0.3"
+    },
+    "devDependencies": {},
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ]
+}
