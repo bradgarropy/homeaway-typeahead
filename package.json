@@ -1,16 +1,19 @@
 {
-    "name": "infinite-scroll",
+    "name": "homeaway-typeahead",
     "version": "1.0.0",
-    "description": "💩 crapp starter",
+    "description": "💬 homeaway interview question - typeahead",
     "keywords": [
         "create-react-app",
         "react",
         "scss",
-        "eslint"
+        "eslint",
+        "prettier",
+        "homeaway",
+        "interview"
     ],
     "homepage": "https://crapp-starter.netlify.com",
     "bugs": {
-        "url": "https://github.com/bradgarropy/cra-starter/issues"
+        "url": "https://github.com/bradgarropy/homeaway-typeahead/issues"
     },
     "license": "MIT",
     "author": {
@@ -20,7 +23,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/bradgarropy/cra-starter"
+        "url": "https://github.com/bradgarropy/homeaway-typeahead"
     },
     "scripts": {
         "start": "react-scripts start",
