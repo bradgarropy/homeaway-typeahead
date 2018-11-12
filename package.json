@@ -11,7 +11,7 @@
         "homeaway",
         "interview"
     ],
-    "homepage": "https://crapp-starter.netlify.com",
+    "homepage": "https://homeaway-typeahead.netlify.com",
     "bugs": {
         "url": "https://github.com/bradgarropy/homeaway-typeahead/issues"
     },
@@ -34,9 +34,9 @@
     "dependencies": {
         "axios": "^0.18.0",
         "lodash.isempty": "^4.4.0",
-        "node-sass": "^4.9.3",
-        "react": "^16.5.2",
-        "react-dom": "^16.5.2",
+        "node-sass": "^4.10.0",
+        "react": "^16.6.1",
+        "react-dom": "^16.6.1",
         "react-router-dom": "^4.3.1",
         "react-scripts": "2.0.3"
     },
