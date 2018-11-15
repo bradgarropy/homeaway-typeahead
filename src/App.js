@@ -41,16 +41,15 @@ class App extends Component {
     render() {
         const {pokemon, submitted} = this.state
 
-        console.log(pokemon, submitted)
-
         return (
             <Router>
                 <div className="app">
                     <Header />
                     <div className="content">
                         <SearchBar onSubmit={this.onSubmit} />
-                        {!isEmpty(pokemon) &&
-                            submitted && <PokemonCard pokemon={pokemon} />}
+                        {!isEmpty(pokemon) && submitted && (
+                            <PokemonCard pokemon={pokemon} />
+                        )}
                         {isEmpty(pokemon) && submitted && <NotFound />}
                     </div>
                     <Footer />
