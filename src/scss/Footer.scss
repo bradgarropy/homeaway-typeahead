@@ -1,7 +1,14 @@
+@import "colors";
+
 .footer {
-    margin: 3rem 0;
+    margin-top: 3rem;
+    padding: 3rem 0;
+    border-top: 1px solid $lightergray;
+    width: 70%;
+    text-align: center;
 
     svg {
-        width: 3rem;
+        fill: $lightgray;
+        width: 2.4rem;
     }
 }

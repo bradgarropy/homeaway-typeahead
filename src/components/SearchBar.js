@@ -9,7 +9,7 @@ import SearchBarMatches from "./SearchBarMatches"
 import "../scss/SearchBar.scss"
 
 // api
-import {getPokemonList} from "../api/pokemon"
+import {searchUsers} from "../api/github"
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -17,8 +17,7 @@ class SearchBar extends React.Component {
 
         this.state = {
             search: "",
-            matches: [],
-            pokemonList: [],
+            users: [],
         }
 
         this.onChange = this.onChange.bind(this)
@@ -26,23 +25,13 @@ class SearchBar extends React.Component {
         this.onSubmit = this.onSubmit.bind(this)
     }
 
-    async componentDidMount() {
-        const pokemonList = await getPokemonList()
-        this.setState({pokemonList})
-    }
-
-    onChange(event) {
+    async onChange(event) {
         const {name, value} = event.target
-        const {pokemonList} = this.state
-
-        const matches = pokemonList
-            .map(pokemon => pokemon.name)
-            .filter(name => name.startsWith(value))
-            .slice(0, 7)
+        const users = await searchUsers(value)
 
         this.setState({
             [name]: value,
-            matches,
+            users,
         })
     }
 
@@ -62,12 +51,13 @@ class SearchBar extends React.Component {
 
         this.setState({
             search: "",
-            matches: [],
+            users: [],
         })
     }
 
     render() {
-        const {search, matches} = this.state
+        const {search, users} = this.state
+        const matches = users.slice(0, 7).map(user => user.login)
 
         return (
             <div className="search-bar">
@@ -78,8 +68,7 @@ class SearchBar extends React.Component {
                         value={search}
                         onChange={this.onChange}
                     />
-                    {search &&
-                        !isEmpty(matches) && (
+                    {search && !isEmpty(matches) && (
                         <SearchBarMatches
                             matches={matches}
                             onClick={this.onClick}

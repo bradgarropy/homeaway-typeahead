@@ -6,7 +6,7 @@ import isEmpty from "lodash.isempty"
 // components
 import Header from "./components/Header"
 import SearchBar from "./components/SearchBar"
-import PokemonCard from "./components/PokemonCard"
+import GithubUser from "./components/GithubUser"
 import NotFound from "./components/NotFound"
 import Footer from "./components/Footer"
 
@@ -14,14 +14,14 @@ import Footer from "./components/Footer"
 import "./scss/App.scss"
 
 // api
-import {getPokemon} from "./api/pokemon"
+import {getUser} from "./api/github"
 
 class App extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            pokemon: {},
+            user: {},
             submitted: false,
         }
 
@@ -31,15 +31,15 @@ class App extends Component {
     async onSubmit(event, search) {
         event.preventDefault()
 
-        const pokemon = await getPokemon(search)
+        const user = await getUser(search)
         this.setState({
-            pokemon,
+            user,
             submitted: true,
         })
     }
 
     render() {
-        const {pokemon, submitted} = this.state
+        const {user, submitted} = this.state
 
         return (
             <Router>
@@ -47,10 +47,10 @@ class App extends Component {
                     <Header />
                     <div className="content">
                         <SearchBar onSubmit={this.onSubmit} />
-                        {!isEmpty(pokemon) && submitted && (
-                            <PokemonCard pokemon={pokemon} />
+                        {!isEmpty(user) && submitted && (
+                            <GithubUser user={user} />
                         )}
-                        {isEmpty(pokemon) && submitted && <NotFound />}
+                        {isEmpty(user) && submitted && <NotFound />}
                     </div>
                     <Footer />
                 </div>

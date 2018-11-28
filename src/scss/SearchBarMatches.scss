@@ -2,17 +2,18 @@
 
 .search-bar-matches {
     background: white;
-    color: $gray;
-    font-size: 1.25rem;
+    color: $blue;
+    font-size: 1.4rem;
+    font-weight: 600;
     list-style: none;
     margin-top: 0.75rem;
     margin-bottom: 0;
-    border-radius: 0.75rem;
+    border-radius: 0.3rem;
     padding: 0.5rem;
     position: absolute;
     width: inherit;
     box-sizing: border-box;
-    border: 1px solid black;
+    border: 1px solid $lightgray;
     text-align: center;
 
     li {
@@ -20,7 +21,7 @@
         border-radius: 0.5rem;
 
         &:hover {
-            color: $red;
+            text-decoration: underline;
             cursor: pointer;
         }
     }
