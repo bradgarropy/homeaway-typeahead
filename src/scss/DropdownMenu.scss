@@ -1,10 +1,9 @@
 @import "colors";
 
-.search-bar-matches {
+.dropdown-menu {
     background: white;
-    color: $blue;
+    color: $gray;
     font-size: 1.4rem;
-    font-weight: 600;
     list-style: none;
     margin-top: 0.75rem;
     margin-bottom: 0;
@@ -16,12 +15,17 @@
     border: 1px solid $lightgray;
     text-align: center;
 
+    .hover {
+        background-color: $lightergray;
+        cursor: pointer;
+    }
+
     li {
         padding: 0.25rem;
-        border-radius: 0.5rem;
+        border-radius: 0.3rem;
 
         &:hover {
-            text-decoration: underline;
+            background-color: $lightergray;
             cursor: pointer;
         }
     }

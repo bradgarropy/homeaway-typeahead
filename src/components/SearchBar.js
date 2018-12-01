@@ -4,7 +4,7 @@ import isEmpty from "lodash.isempty"
 import debounce from "lodash.debounce"
 
 // components
-import SearchBarMatches from "./SearchBarMatches"
+import DropdownMenu from "./DropdownMenu"
 
 // styles
 import "../scss/SearchBar.scss"
@@ -58,7 +58,7 @@ class SearchBar extends React.Component {
 
     render() {
         const {search, users} = this.state
-        const matches = isEmpty(users)
+        const items = isEmpty(users)
             ? []
             : users.slice(0, 7).map(user => user.login)
 
@@ -71,11 +71,8 @@ class SearchBar extends React.Component {
                         value={search}
                         onChange={this.onChange}
                     />
-                    {search && !isEmpty(matches) && (
-                        <SearchBarMatches
-                            matches={matches}
-                            onClick={this.onClick}
-                        />
+                    {search && !isEmpty(items) && (
+                        <DropdownMenu items={items} onClick={this.onClick} />
                     )}
                 </form>
             </div>
