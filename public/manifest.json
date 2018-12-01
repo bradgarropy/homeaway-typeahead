@@ -1,6 +1,6 @@
 {
-    "name": "crapp starter",
-    "short_name": "crapp starter",
+    "name": "HomeAway Typeahead",
+    "short_name": "HomeAway Typeahead",
     "start_url": "/",
     "display": "minimal-ui",
     "theme_color": "#ffffff",
