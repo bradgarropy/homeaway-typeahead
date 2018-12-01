@@ -2,11 +2,11 @@
 
 .header {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     justify-content: space-between;
     justify-self: stretch;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     background: $black;
     font-size: 1.4rem;
 
@@ -19,5 +19,11 @@
     svg {
         width: 3.2rem;
         fill: white;
+    }
+
+    .logo {
+        display: grid;
+        grid-template-columns: auto auto;
+        column-gap: 0.5rem;
     }
 }

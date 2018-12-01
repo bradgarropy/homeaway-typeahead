@@ -10,8 +10,10 @@ import "../scss/Header.scss"
 const Header = () => {
     return (
         <header className="header">
-            <GithubLogo />
-            <p>Typeahead</p>
+            <div className="logo">
+                <GithubLogo />
+                <p>Typeahead</p>
+            </div>
             <BuiltBy />
         </header>
     )

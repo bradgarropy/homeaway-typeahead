@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import isEmpty from "lodash.isempty"
+import debounce from "lodash.debounce"
 
 // components
 import SearchBarMatches from "./SearchBarMatches"
@@ -12,37 +13,37 @@ import "../scss/SearchBar.scss"
 import {searchUsers} from "../api/github"
 
 class SearchBar extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            search: "",
-            users: [],
-        }
-
-        this.onChange = this.onChange.bind(this)
-        this.onClick = this.onClick.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
+    static propTypes = {
+        onSubmit: PropTypes.func.isRequired,
     }
 
-    async onChange(event) {
+    state = {
+        search: "",
+        users: [],
+    }
+
+    debouncedSearchUsers = debounce(async value => {
+        const users = value ? await searchUsers(value) : []
+        this.setState({users})
+    }, 300)
+
+    onChange = async event => {
+        // handle input
         const {name, value} = event.target
-        const users = await searchUsers(value)
+        this.setState({[name]: value})
 
-        this.setState({
-            [name]: value,
-            users,
-        })
+        // debounce api
+        this.debouncedSearchUsers(value)
     }
 
-    onClick(event) {
+    onClick = event => {
         event.persist()
 
         const search = event.target.innerText
         this.setState({search}, () => this.onSubmit(event))
     }
 
-    onSubmit(event) {
+    onSubmit = event => {
         event.preventDefault()
 
         const {onSubmit} = this.props
@@ -57,7 +58,9 @@ class SearchBar extends React.Component {
 
     render() {
         const {search, users} = this.state
-        const matches = users.slice(0, 7).map(user => user.login)
+        const matches = isEmpty(users)
+            ? []
+            : users.slice(0, 7).map(user => user.login)
 
         return (
             <div className="search-bar">
@@ -79,12 +82,6 @@ class SearchBar extends React.Component {
         )
     }
 }
-
-SearchBar.propTypes = {
-    onSubmit: PropTypes.func.isRequired,
-}
-
-SearchBar.defaultProps = {}
 
 // export
 export default SearchBar
