@@ -17,18 +17,12 @@ import "./scss/App.scss"
 import {getUser} from "./api/github"
 
 class App extends Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            user: {},
-            submitted: false,
-        }
-
-        this.onSubmit = this.onSubmit.bind(this)
+    state = {
+        user: {},
+        submitted: false,
     }
 
-    async onSubmit(event, search) {
+    onSubmit = async(event, search) => {
         event.preventDefault()
 
         const user = await getUser(search)
