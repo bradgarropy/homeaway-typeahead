@@ -20,19 +20,27 @@ class SearchBar extends React.Component {
     state = {
         search: "",
         users: [],
+        open: false,
     }
 
     debouncedSearchUsers = debounce(async value => {
         const users = value ? await searchUsers(value) : []
-        this.setState({users})
+        const open = users ? true : false
+        this.setState({users, open})
     }, 300)
 
-    onChange = async event => {
-        // handle input
-        const {name, value} = event.target
-        this.setState({[name]: value})
+    onFocus = () => {
+        this.setState({open: true})
+    }
 
-        // debounce api
+    onBlur = () => {
+        this.setState({open: false})
+    }
+
+    onChange = async event => {
+        const {name, value} = event.target
+
+        this.setState({[name]: value})
         this.debouncedSearchUsers(value)
     }
 
@@ -57,7 +65,7 @@ class SearchBar extends React.Component {
     }
 
     render() {
-        const {search, users} = this.state
+        const {search, users, open} = this.state
         const items = isEmpty(users)
             ? []
             : users.slice(0, 7).map(user => user.login)
@@ -70,9 +78,15 @@ class SearchBar extends React.Component {
                         name="search"
                         value={search}
                         onChange={this.onChange}
+                        onFocus={this.onFocus}
+                        onBlur={this.onBlur}
                     />
                     {search && !isEmpty(items) && (
-                        <DropdownMenu items={items} onClick={this.onClick} />
+                        <DropdownMenu
+                            open={open}
+                            items={items}
+                            onClick={this.onClick}
+                        />
                     )}
                 </form>
             </div>
