@@ -29,6 +29,10 @@ class SearchBar extends React.Component {
         this.setState({users, open})
     }, 300)
 
+    onKeyUp = event => {
+        if (event.key === "Escape") this.setState({open: false})
+    }
+
     onFocus = () => {
         this.setState({open: true})
     }
@@ -80,6 +84,7 @@ class SearchBar extends React.Component {
                         onChange={this.onChange}
                         onFocus={this.onFocus}
                         onBlur={this.onBlur}
+                        onKeyUp={this.onKeyUp}
                     />
                     {search && !isEmpty(items) && (
                         <DropdownMenu
