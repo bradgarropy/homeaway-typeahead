@@ -25,8 +25,7 @@ class SearchBar extends React.Component {
 
     debouncedSearchUsers = debounce(async value => {
         const users = value ? await searchUsers(value) : []
-        const open = users ? true : false
-        this.setState({users, open})
+        this.setState({users})
     }, 300)
 
     onKeyUp = event => {
@@ -44,11 +43,11 @@ class SearchBar extends React.Component {
     onChange = async event => {
         const {name, value} = event.target
 
-        this.setState({[name]: value})
+        this.setState({[name]: value, open: true})
         this.debouncedSearchUsers(value)
     }
 
-    onClick = event => {
+    onSelection = event => {
         event.persist()
 
         const search = event.target.innerText
@@ -90,7 +89,7 @@ class SearchBar extends React.Component {
                         <DropdownMenu
                             open={open}
                             items={items}
-                            onClick={this.onClick}
+                            onSelection={this.onSelection}
                         />
                     )}
                 </form>

@@ -8,7 +8,7 @@ class DropdownMenu extends React.Component {
     static propTypes = {
         open: PropTypes.bool.isRequired,
         items: PropTypes.arrayOf(PropTypes.string).isRequired,
-        onClick: PropTypes.func.isRequired,
+        onSelection: PropTypes.func.isRequired,
     }
 
     state = {selected: -1}
@@ -46,7 +46,7 @@ class DropdownMenu extends React.Component {
 
     render = () => {
         const {selected} = this.state
-        const {open, items, onClick} = this.props
+        const {open, items, onSelection} = this.props
 
         if (!open) {
             return null
@@ -58,7 +58,7 @@ class DropdownMenu extends React.Component {
                     <li
                         key={index}
                         className={index === selected ? "hover" : ""}
-                        onClick={onClick}
+                        onMouseDown={onSelection}
                     >
                         {item}
                     </li>
