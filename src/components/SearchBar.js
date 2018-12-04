@@ -80,6 +80,7 @@ class SearchBar extends React.Component {
                         autoComplete="off"
                         name="search"
                         value={search}
+                        placeholder="🔎 search..."
                         onChange={this.onChange}
                         onFocus={this.onFocus}
                         onBlur={this.onBlur}

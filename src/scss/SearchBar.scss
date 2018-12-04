@@ -15,5 +15,9 @@
         font-size: 1.4rem;
         text-align: center;
         box-sizing: border-box;
+
+        &::placeholder {
+            color: $lightgray;
+        }
     }
 }
