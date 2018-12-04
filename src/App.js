@@ -6,6 +6,7 @@ import isEmpty from "lodash.isempty"
 // components
 import Header from "./components/Header"
 import SearchBar from "./components/SearchBar"
+import DropdownMenu from "./components/DropdownMenu"
 import GithubUser from "./components/GithubUser"
 import NotFound from "./components/NotFound"
 import Footer from "./components/Footer"
@@ -40,10 +41,20 @@ class App extends Component {
                 <div className="app">
                     <Header />
                     <div className="content">
-                        <SearchBar onSubmit={this.onSubmit} />
+                        <SearchBar onSubmit={this.onSubmit}>
+                            {(open, items, onSelection) => (
+                                <DropdownMenu
+                                    open={open}
+                                    items={items}
+                                    onSelection={onSelection}
+                                />
+                            )}
+                        </SearchBar>
+
                         {!isEmpty(user) && submitted && (
                             <GithubUser user={user} />
                         )}
+
                         {isEmpty(user) && submitted && <NotFound />}
                     </div>
                     <Footer />

@@ -3,9 +3,6 @@ import PropTypes from "prop-types"
 import isEmpty from "lodash.isempty"
 import debounce from "lodash.debounce"
 
-// components
-import DropdownMenu from "./DropdownMenu"
-
 // styles
 import "../scss/SearchBar.scss"
 
@@ -14,6 +11,7 @@ import {searchUsers} from "../api/github"
 
 class SearchBar extends React.Component {
     static propTypes = {
+        children: PropTypes.func.isRequired,
         onSubmit: PropTypes.func.isRequired,
     }
 
@@ -86,13 +84,8 @@ class SearchBar extends React.Component {
                         onBlur={this.onBlur}
                         onKeyUp={this.onKeyUp}
                     />
-                    {search && !isEmpty(items) && (
-                        <DropdownMenu
-                            open={open}
-                            items={items}
-                            onSelection={this.onSelection}
-                        />
-                    )}
+
+                    {this.props.children(open, items, this.onSelection)}
                 </form>
             </div>
         )

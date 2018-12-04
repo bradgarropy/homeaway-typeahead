@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import isEmpty from "lodash.isempty"
 
 // styles
 import "../scss/DropdownMenu.scss"
@@ -48,9 +49,8 @@ class DropdownMenu extends React.Component {
         const {selected} = this.state
         const {open, items, onSelection} = this.props
 
-        if (!open) {
-            return null
-        }
+        if (!open) return null
+        if (isEmpty(items)) return null
 
         return (
             <ul className="dropdown-menu">

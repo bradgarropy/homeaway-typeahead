@@ -18,13 +18,17 @@ async function searchUsers(query) {
 }
 
 async function getUser(username) {
-    const response = await axios.get(
-        `https://api.github.com/users/${username}`,
-        {auth},
-    )
+    try {
+        const response = await axios.get(
+            `https://api.github.com/users/${username}`,
+            {auth},
+        )
 
-    const user = response.data
-    return user
+        const user = response.data
+        return user
+    } catch (error) {
+        return {}
+    }
 }
 
 // exports
